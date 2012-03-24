@@ -1,6 +1,8 @@
 @media only screen and (min-width: 1023px) {
     
-   
+   header {
+       margin-bottom: 33px;
+       }
     
     #main {
         width: 1020px;
@@ -11,6 +13,7 @@
         h1 {
             font-size: 32px;
             color: #328fc9;
+            letter-spacing: 1px;
             
             &:nth-letter(3n) {
                 color:red;
@@ -37,10 +40,8 @@
          .avatar {
              width: 140px;
              height: 140px;
-             .border-radius(100px);
              border: 2px solid @white;
              .box-shadow();
-             position: absolute;
              left: -60px;
              top: 15px;
              }
@@ -53,19 +54,16 @@
              .box-shadow();
              position: absolute;
              left: -30px;
+             right: inherit;
              top: 130px;
              
              
              &.happy {
                  background-image: url(/static/img/happy.png);
-                 background-position: center;
-                 background-color: #fddb3e;
                  }
                  
              &.sad {
                  background-image: url(/static/img/sad.png);
-                 background-position: center;
-                 background-color: #98dcf2;
                  }
              
              }
@@ -110,6 +108,34 @@
              left: 0px;
              right: 0px;
              height: 30px;
+             
+             button {
+                 background-color: #999999;
+                 width: 25px;
+                 height: 25px;
+                 border: 1px solid #ffffff;
+                 .border-radius(40px);
+                 float: right;
+                 margin: 0 5px 0 0;
+                 display: block;
+                 opacity: 0.15;
+                 }
+             
+             &:hover {
+                            
+                 button {
+                     background-color: #fddb3e;
+                     opacity: 0.9;
+                     
+                     &:active, &.active {
+                         opacity:1;
+                         }
+                     
+                     }
+                     
+                 }
+             
+             
              }
          
         }
