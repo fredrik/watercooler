@@ -33,5 +33,13 @@ class Status(Document):
     user    = ReferenceField(User, required=True)
     emotion = ReferenceField(Emotion)
 
+    def __json__(self):
+        return {
+            'status':   self.status,
+            'date':     self.date,
+            'username': self.user.username,
+            'emotion':  self.emotion.name if self.emotion else '',
+        }
+
     def __unicode__(self):
         return "<%s> '%s' at %s" % (self.user.username, self.status, self.date)
