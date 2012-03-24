@@ -1,0 +1,12 @@
+ben is the interface to statuses; a status API.
+
+methods:
+
+add_status(status, user, emotion)
+  
+  adds a status.
+
+
+list_latest_statuses()
+
+  returns a list of the latest status for each user.
