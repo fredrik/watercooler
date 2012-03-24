@@ -21,7 +21,7 @@
 
     <header>
         
-        <div id="logo">WaterCooler</div>
+        <div id="logo"><h1>WaterCooler</h1></div>
     
     </header>
     
@@ -29,20 +29,20 @@
     
         <div class="person">
             
-                <div class="interact">
-                    
+            <div class="interact">
                 
-                </div>
-                
-                <div class="avatar" style="background-image:url(/static/img/fred.jpg);">
-                
-                    &nbsp;
             
-                </div>
-                
-                <div class="face happy">
-                
-                </div>
+            </div>
+            
+            <div class="avatar" style="background-image:url(/static/img/fred.jpg);">
+            
+                &nbsp;
+        
+            </div>
+            
+            <div class="face happy">
+            
+            </div>
                     
             
             <div class="status">        
@@ -55,15 +55,46 @@
                 
             
             </div>
+
+        </div>
+        
+        
+        <div class="person">
+                    
+            <div class="interact">
+                
             
+            </div>
             
-          
+            <div class="avatar" style="background-image:url(/static/img/alex.jpg);">
+            
+                &nbsp;
+        
+            </div>
+            
+            <div class="face sad">
+                &nbsp;
+            </div>
+                    
+            
+            <div class="status">        
+            
+                <h1>Alex</h1>
+        
+                <blockquote class="quote">&hellip; is upbeat and energised. Slightly hungry. Today he is writing an API to add/list statuses with <a href="" class="person-link">Fredrik</a>.</blockquote>
+            
+                 <span class="dateline">about 1 hour ago</span>
+                
+            
+            </div>
+
+        </div>
         
         
-   
         
-    
+        
     </div>
+    
     
     <footer>
     
@@ -71,7 +102,17 @@
     
     </footer>
 
-
+    
+    <!-- Scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/js/libs/jquery.lettering.js" type="text/javascript"></script>
+    
+    <script>
+      $(document).ready(function() {
+        $("#logo").children("h1").lettering();
+      });
+    </script>
+    
 </body>
 
 </html>

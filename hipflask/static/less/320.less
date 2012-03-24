@@ -4,17 +4,71 @@ body {
     background-image: url(/static/img/noise.png);
     .omnes;
     }
+header {
+    height: 44px;
+    background: @white;
+    border-bottom: 1px solid #ffffff;
+    .box-shadow();
+    margin-bottom: 44px;
+    }  
     
+#logo {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    width: 320px;
+    text-align: center;
+    
+    h1 {
+        display: block;  
+        
+        span:nth-child(2n){
+            color:#2D80B4;
+            }
+            
+        span:nth-child(3n){
+            color: #2974A3;
+            }
+            
+        span:nth-child(4n){
+            color: #256993;
+            }
+            
+        span:nth-child(6n-2){
+            color: #4B9FD2;
+            }
+            
+        span:nth-child(4n-1){
+            color: #328FC9;
+            }
+            
+        span:nth-child(8n-6){
+            color: #3B96CE;
+            }        
+        
+        }
 
+    }
 
 /* Profile badge */
 
 .person {
     background: @white;
+    width: 300px;
+    margin: 5px 9px;
+    float: none;
     .box-shadow();
+    .border-radius();
+    position: relative;
+    border: 1px solid #ffffff;
     
     .avatar {
         background-position: center;
+        background-repeat: no-repeat;
+        }
+        
+    .face {
         background-repeat: no-repeat;
         }
     
