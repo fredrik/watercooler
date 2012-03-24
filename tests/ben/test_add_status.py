@@ -7,6 +7,7 @@ from watercooler.ben.api import Api
 from watercooler.ben.errors import NoSuchUserError
 from watercooler.hipflask import environment
 from watercooler.hipflask.models import User, Status, Emotion
+from mock_notifier import MockNotifier
 
 
 class TestAddStatus(unittest2.TestCase):
@@ -121,7 +122,20 @@ class TestAddStatus(unittest2.TestCase):
         self.assertEqual(status.user, self.user)
         self.assertEqual(status.emotion.name, 'happy')
 
+    def test_add_status_sends_post_request(self):
+        """
+        Verify that add_status() sends a post request to the registered listener.
+        """
 
+        self.assertEqual([], list(Status.objects))
+
+        notifier = MockNotifier()
+
+        api = Api(notifier=notifier)
+        api.add_status(status='Feeling kinda groovy, working on a movie.', user=self.user)
+
+        self.assertEqual(1, len(notifier.notifications))
+        self.assertEqual([{'username': self.user.username}], notifier.notifications)
 
 
 if __name__ == '__main__':

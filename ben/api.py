@@ -1,9 +1,14 @@
 from watercooler.hipflask.models import Status, User, Emotion, Task
+from watercooler.ben.notifier import NodeNotifier
 from watercooler.ben.errors import NoSuchUserError
 from mongoengine.queryset import DoesNotExist
 
 
 class Api(object):
+
+    def __init__(self, notifier=NodeNotifier()):
+        self.notifier = notifier
+
     """
     Add status for a user.
 
@@ -32,3 +37,4 @@ class Api(object):
 
         # save status.
         Status(status=status, user=user, emotion=emotion).save()
+        self.notifier.notify(user.username)
