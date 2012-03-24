@@ -16,7 +16,7 @@ class User(Document):
 
 # happy, sad.
 class Emotion(Document):
-    name   = StringField(required=True)
+    name   = StringField(required=True, unique=True)
     weight = IntField(default=0, min_value=0, max_value=10)
 
 class Task(Document):
