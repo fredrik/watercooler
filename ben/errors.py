@@ -1,0 +1,2 @@
+class NoSuchUserError(Exception):
+    pass

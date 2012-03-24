@@ -16,7 +16,7 @@ class User(Document):
 
 # happy, sad.
 class Emotion(Document):
-    name   = StringField(required=True)
+    name   = StringField(required=True, unique=True)
     weight = IntField(default=0, min_value=0, max_value=10)
 
 class Task(Document):
@@ -26,9 +26,12 @@ class Status(Document):
     meta = {
         'indexes': [
             ('user', '-date'),
-        ]
+        ],
     }
     status  = StringField(required=True)
     date    = DateTimeField(default=datetime.utcnow)
     user    = ReferenceField(User, required=True)
     emotion = ReferenceField(Emotion)
+
+    def __unicode__(self):
+        return "<%s> '%s' at %s" % (self.user.username, self.status, self.date)
