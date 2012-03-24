@@ -4,6 +4,7 @@ import os
 os.environ['WATERCOOLER_ENVIRONMENT'] = 'test'
 
 from watercooler.ben.api import Api
+from watercooler.ben.errors import NoSuchUserError
 from watercooler.hipflask import environment
 from watercooler.hipflask.models import User, Status, Emotion
 
@@ -55,6 +56,34 @@ class TestAddStatus(unittest2.TestCase):
         self.assertEqual(status.user, self.user)
         self.assertEqual(status.emotion, self.sad_emotion)
 
+    def test_add_status_with_username_as_string(self):
+        """
+        Add a status with the username specified as a string.
+        """
+
+        self.assertEqual([], list(Status.objects))
+
+        api = Api()
+        api.add_status(status='Sated and happy.', user='lewpen')
+
+        # verify that the status was inserted successfully.
+        status = Status.objects.first()
+        self.assertIsNotNone(status)
+        self.assertEqual(status.status, 'Sated and happy.')
+        self.assertEqual(status.user, self.user)
+        self.assertEqual(status.emotion, None)
+
+    def test_add_status_with_unknown_user(self):
+        """
+        Add a status with the username specified as a string.
+        The call will raise NoSuchUserError as the user does not exist.
+        """
+
+        self.assertEqual([], list(Status.objects))
+
+        api = Api()
+        with self.assertRaises(NoSuchUserError):
+            api.add_status(status='Confused. Do I not exist?', user='donald.kruse')
 
 
 

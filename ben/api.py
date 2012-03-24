@@ -1,4 +1,7 @@
 from watercooler.hipflask.models import Status, User, Emotion, Task
+from watercooler.ben.errors import NoSuchUserError
+from mongoengine.queryset import DoesNotExist
+
 
 class Api(object):
     """
@@ -9,4 +12,14 @@ class Api(object):
     +emotion+ is an Emotion object or an emotionname. Optional.
     """
     def add_status(self, status, user, emotion=None):
+
+        if not type(user) == User:
+            # convert user to a User object
+            username = user
+            try:
+                user = User.objects.get(username=username)
+            except DoesNotExist:
+                raise NoSuchUserError()
+
+        # save status.
         Status(status=status, user=user, emotion=emotion).save()
