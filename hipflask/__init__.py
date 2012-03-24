@@ -9,3 +9,7 @@ app.config.from_object('watercooler.hipflask.config.Configuration')
 # application object is created."
 # http://flask.pocoo.org/docs/patterns/packages/#simple-packages
 import watercooler.hipflask.views
+
+# mongo
+from mongoengine import connect
+connect('watercooler')
