@@ -1,5 +1,13 @@
 @media only screen and (min-width: 1023px) {
     
+    header {
+        height: 44px;
+        background: @white;
+        border-bottom: 1px solid #ffffff;
+        .box-shadow();
+        margin-bottom: 44px;
+        }
+    
     #main {
         width: 960px;
         margin: 0 auto;
@@ -8,8 +16,78 @@
     
     .person {
          width: 440px;
-         padding: 20px;
+         padding: 20px 40px 20px 20px;
          float: left;
+         .border-radius();
+         position: relative;
+         border: 1px solid #ffffff;
+         
+         .avatar {
+             width: 140px;
+             height: 140px;
+             .border-radius(100px);
+             border: 2px solid @white;
+             .box-shadow();
+             position: absolute;
+             left: -60px;
+             top: 15px;
+             }
+             
+         .face {
+             width: 95px;
+             height: 95px;
+             .border-radius(100px);
+             border: 2px solid @white;
+             .box-shadow();
+             position: absolute;
+             left: -40px;
+             top: 130px;
+             
+             
+             &.happy {
+                 background-image: url(/static/img/happy.png);
+                 background-position: center;
+                 background-color: #fddb3e;
+                 }
+             
+             }
+             
+         .status {
+             margin-left: 75px;
+             
+             h1 {
+                 font-size: 44px;
+                 line-height: 1;
+                 margin: 10px 0 10px 0 ;
+                 padding: 0 0 0 0;                 
+                 }
+             
+             .dateline {
+                 display: block;
+                 font-weight: 300;
+                 font-size: 16px;
+                 color: @grey;
+                 margin: 0 0 20px 0;
+                 }
+             
+             blockquote {
+                 font-size: 24px;
+                 margin: 0 0 10px 0;
+                 padding: 0 0 0 0;
+                 font-style: italic;
+                                
+                 }
+                              
+             }
+         
+         .interact {
+             position: absolute;
+             bottom: 0px;
+             left: 0px;
+             right: 0px;
+             height: 30px;
+             }
+         
         }
 
     }
