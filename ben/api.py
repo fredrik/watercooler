@@ -11,7 +11,7 @@ class Api(object):
     +user+ is a User object or a username. Required.
     +emotion+ is an Emotion object or an emotionname. Optional.
     """
-    def add_status(self, status, user, emotion_or_emotionname=None):
+    def add_status(self, status, user, emotion=None):
 
         if not type(user) == User:
             # convert to User object
@@ -21,15 +21,14 @@ class Api(object):
             except DoesNotExist:
                 raise NoSuchUserError()
 
-        if emotion_or_emotionname and not type(emotion_or_emotionname) == Emotion:
+        if emotion and not type(emotion) == Emotion:
             # convert to Emotion object
+            emotionname = emotion
             try:
-                emotion = Emotion.objects.get(name=emotion_or_emotionname)
+                emotion = Emotion.objects.get(name=emotionname)
             except DoesNotExist:
-                emotion = Emotion(name=emotion_or_emotionname)
+                emotion = Emotion(name=emotionname)
                 emotion.save()
-        else:
-            emotion = emotion_or_emotionname
 
         # save status.
         Status(status=status, user=user, emotion=emotion).save()

@@ -48,7 +48,7 @@ class TestAddStatus(unittest2.TestCase):
         self.assertEqual([], list(Status.objects))
 
         api = Api()
-        api.add_status(status='I was wanting you to love me.', user=self.user, emotion_or_emotionname=self.sad_emotion)
+        api.add_status(status='I was wanting you to love me.', user=self.user, emotion=self.sad_emotion)
 
         # verify that the status was inserted successfully.
         status = Status.objects.first()
@@ -94,7 +94,7 @@ class TestAddStatus(unittest2.TestCase):
         self.assertEqual([], list(Status.objects))
 
         api = Api()
-        api.add_status(status='Very sad indeed.', user=self.user, emotion_or_emotionname='sad')
+        api.add_status(status='Very sad indeed.', user=self.user, emotion='sad')
 
         # verify that the status was inserted successfully.
         status = Status.objects.first()
@@ -112,7 +112,7 @@ class TestAddStatus(unittest2.TestCase):
         self.assertEqual([], list(Status.objects))
 
         api = Api()
-        api.add_status(status='Lots of energy on the keyboard.', user=self.user, emotion_or_emotionname='happy')
+        api.add_status(status='Lots of energy on the keyboard.', user=self.user, emotion='happy')
 
         # verify that the status was inserted successfully.
         status = Status.objects.first()
