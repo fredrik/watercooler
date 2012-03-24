@@ -26,9 +26,12 @@ class Status(Document):
     meta = {
         'indexes': [
             ('user', '-date'),
-        ]
+        ],
     }
     status  = StringField(required=True)
     date    = DateTimeField(default=datetime.utcnow)
     user    = ReferenceField(User, required=True)
     emotion = ReferenceField(Emotion)
+
+    def __unicode__(self):
+        return "<%s> '%s' at %s" % (self.user.username, self.status, self.date)

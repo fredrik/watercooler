@@ -38,3 +38,16 @@ class Api(object):
         # save status.
         Status(status=status, user=user, emotion=emotion).save()
         self.notifier.notify(user.username)
+
+
+    """
+    List the most recent status for each user, sorted by date posted.
+    """
+    def list_statuses(self):
+        statuses = []
+        for user in User.objects:
+            latest = Status.objects(user=user).order_by('-date').first()
+            if latest:
+                statuses.append((latest.date, latest))
+        # order by date
+        return [status for date,status in sorted(statuses, reverse=True)]
