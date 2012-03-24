@@ -8,7 +8,7 @@ from mongoengine.queryset import DoesNotExist
 #from watercooler.email import either pull or pushed emails.
 
 asd = [
-    {'email':'test@testing.com', 'from': 'Simon Johansson'}
+    {'email':'test@testing.com', 'from': 'Simon Johansson', 'message': "I'm feeling happy\nI'm working on stuff"}
 ]
 
 def get_user(email):
@@ -23,11 +23,11 @@ def get_user(email):
         user.save()
         return user
 
-def go():
+def bridge():
     for email in asd:# <- get_emails()
         user = get_user(email)
         email_message = email.get('message')
         #Api.new_email(email=email_message, user=user) <- or something similar?
         
 if __name__ == '__main__':
-    go()
+    bridge()
