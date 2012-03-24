@@ -41,6 +41,14 @@ class Api(object):
 
 
     """
+    Get the latest status for a user.
+    """
+    def get_latest_status(self, username):
+        user = User.objects(username=username).first()
+        return Status.objects(user=user).order_by('-date').first()
+
+
+    """
     List the most recent status for each user, sorted by date posted.
     """
     def list_statuses(self):
