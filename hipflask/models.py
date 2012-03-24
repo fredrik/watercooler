@@ -28,6 +28,7 @@ class Status(Document):
             ('user', '-date'),
         ]
     }
+    status  = StringField(required=True)
     date    = DateTimeField(default=datetime.utcnow)
     user    = ReferenceField(User, required=True)
     emotion = ReferenceField(Emotion)
