@@ -10,7 +10,7 @@ from watercooler.hipflask import environment
 from watercooler.hipflask.models import User, Status, Emotion
 
 
-class TestListStatuses(unittest2.TestCase):
+class TestGetStatus(unittest2.TestCase):
 
     def setUp(self):
 
@@ -45,20 +45,14 @@ class TestListStatuses(unittest2.TestCase):
         for name, status in self.statuses.iteritems():
             status.save()
 
-
-    def test_list_statuses(self):
-
+    def test_get_status(self):
+        """
+        Get the latest status for each user.
+        """
         api = Api()
-        statuses = api.list_statuses()
-
-        self.assertEqual(
-            [
-                self.statuses['lisa-happy'],
-                self.statuses['smiley-mic'],
-                self.statuses['lewpen-evening']
-            ],
-            statuses,
-        )
+        self.assertEqual(self.statuses['lewpen-evening'], api.get_status('lewpen'))
+        self.assertEqual(self.statuses['lisa-happy'], api.get_status('lisa'))
+        self.assertEqual(self.statuses['smiley-mic'], api.get_status('smileyface'))
 
 
 if __name__ == '__main__':
