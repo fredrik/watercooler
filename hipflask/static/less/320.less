@@ -55,8 +55,8 @@ header {
 
 .person {
     background: @white;
-    width: 300px;
-    margin: 5px 9px;
+    width: 290px;
+    margin: 5px 14px;
     float: none;
     .box-shadow();
     .border-radius();
@@ -66,6 +66,13 @@ header {
     .avatar {
         background-position: center;
         background-repeat: no-repeat;
+        .border-radius(100px);
+        border: 2px solid @white;
+        .box-shadow();
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        left: -10px;
         }
         
     .face {
