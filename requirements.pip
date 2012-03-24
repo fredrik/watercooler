@@ -3,7 +3,6 @@ Jinja2==2.6
 WTForms==1.0.1
 Werkzeug==0.8.3
 distribute==0.6.21
-flask-peewee==0.5.0
-peewee==0.9.2
+mongoengine==0.6.2
+pymongo==2.1.1
 wsgiref==0.1.2
-wtf-peewee==0.1.3
