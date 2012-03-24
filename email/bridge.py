@@ -4,7 +4,7 @@ os.environ['WATERCOOLER_ENVIRONMENT'] = 'test'
 from watercooler.hipflask import environment
 from watercooler.hipflask.models import User
 from mongoengine.queryset import DoesNotExist
-from watercooler.ben.api import Api
+#from watercooler.ben.api import Api
 #from watercooler.email import either pull or pushed emails.
 
 asd = [
