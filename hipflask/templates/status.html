@@ -16,7 +16,7 @@
 
     <ul>
     {% for status in statuses %}
-      <li>{{status.user.first_name}} is {{status.emotion}}</li>
+      <li>{{status.user.first_name}} is {{status.emotion.name}}</li>
     {% endfor %}
     </ul>
 
