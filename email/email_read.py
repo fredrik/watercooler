@@ -52,6 +52,10 @@ class Get_Emails(object):
     def _getFrom(self, data):
         return data.split('<')[0].strip()
 
+    def _getEmail(self, data):
+        email = data.split('<')[-1]
+        return email.split('>')[0].strip()
+
     def get_mail(self):
         header_parser = email.parser.Parser()
         for extras, header in self._get_mails():
@@ -59,6 +63,7 @@ class Get_Emails(object):
             parsed_mail = header_parser.parsestr(header)
             msg = {
                 'from': self._getFrom(parsed_mail.get('from')),
+                'email': self._getEmail(parsed_mail.get('from')),
                 'date': parsed_mail.get('date'),
             }
             for part in parsed_mail.walk():
@@ -66,9 +71,3 @@ class Get_Emails(object):
                     msg['message'] = part.get_payload(decode=True)
                     self._trash_email(mail_id)
                     yield msg
-
-if __name__ == '__main__':
-    e = Get_Emails(usr=settings.EMAIL_USER, pwd=settings.EMAIL_PASSWORD)
-    for mail in e.get_mail():
-        print mail
-        # Send to rabbit? Save directly to db?
