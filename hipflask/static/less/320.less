@@ -86,22 +86,53 @@ header {
         position: absolute;
         left: -30px;
         top: 50px;
+        .smile;
+        background-color: #ffffff;
+         overflow: hidden;
         
-        &.happy {
-            background-image: url(/static/img/happy-s.png);
-            background-position: center;
-            background-color: #fddb3e;
-            }
+         }
+        
+        i {
+          .border-radius(100px);
+          font-style: normal;
+          position: absolute;
+          display: block;
+          text-align: center;
+          left: 50%;
+          top: 50%;
+          text-shadow: 0px 0px 1px #ffffff;
+          font-size: 36px;
+          width: 37px;
+          height: 32px;
+          margin: -20px 0 0 -20px;
+          padding-top: 8px;
+          padding-left: 3px;                 
+          
             
-        &.sad {
-            background-image: url(/static/img/sad-s.png);
-            background-position: center;
-            background-color: #98dcf2;
-            }
         
+            &.happy{
+               background-color: #fddb3e;
+                &:before {
+                   content: '\0044';
+                   color: #141100;
+                    }
+                }
+            &.sad {
+                                           background-color: #6CB0DA;
+                
+            &:before {
+               content: '\0065';
+               color: #0C2331;
+                    }
+                }            
+            }
         
         }
-        
+      
+    .interact {
+        display:none;
+    }    
+    
     .status {
         margin: 4px 20px;
         
