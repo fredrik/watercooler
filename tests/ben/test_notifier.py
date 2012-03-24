@@ -7,8 +7,6 @@ from watercooler.ben.notifier import NodeNotifier
 
 
 class TestNodeNotifier(unittest2.TestCase):
-    def setUp(self):
-        pass
     def test_notify(self):
         """
         Test that NodeNotifier sends a POST request to the specfied remote listener.
